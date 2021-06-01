@@ -1,0 +1,40 @@
+server:
+  port: 8092
+  servlet:
+    context-path: /account
+spring:
+  application:
+    name: accounting-service
+  datasource:
+    url: jdbc:postgresql://20.90.104.45:5432/account?CreateDatabaseIfNotExist=true
+    username: test_postgresql
+    password: admin
+    initialization-mode: always
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+     ddl-auto: update
+    properties:
+      hibernate:
+        dialect : org.hibernate.dialect.PostgreSQL95Dialect 
+        namingStrategy: org.hibernate.cfg.PhysicalNamingStrategy
+  cloud:
+    discovery:
+      enabled: true
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://20.90.104.45:8761/eureka
+  instance:
+    hostname: 20.90.104.45
+## Azure Active directory configuration
+#azure:
+#  activedirectory:
+#    tenant-id: xxxxxx-your-tenant-id-xxxxxx
+#    client-id: xxxxxx-your-client-id-xxxxxx
+#    client-secret: xxxxxx-your-client-secret-xxxxxx
+logging:
+  level:
+    '[com.ros.accounting]': DEBUG
