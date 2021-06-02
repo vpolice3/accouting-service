@@ -1,5 +1,10 @@
-node{
-  stage('SCM'){
-    git credentialsId: 'GitHub_Credentials', url: 'https://github.com/vpolice3/accouting-service.git'
-  }
+pipeline {
+    agent any 
+    stages {
+        stage('SCM') {
+            steps {
+                 git credentialsId: 'GitHub_Credentials', url: 'https://github.com/vpolice3/accouting-service.git'
+            }
+        }
+    }
 }
