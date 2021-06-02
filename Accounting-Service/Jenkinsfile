@@ -1,0 +1,11 @@
+pipeline{
+  agent any
+  stages{
+    stage('SCM Checkout'){
+      sh 'git credentialsId: 'GitHub_Credentials', url: 'https://github.com/vpolice3/accouting-service.git''
+    }
+    stage('Build'){
+      echo "Build project"
+      sh 'mvn clean install -DskipTests=true'
+    }  
+  }
