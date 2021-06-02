@@ -6,5 +6,10 @@ pipeline {
                  git credentialsId: 'GitHub_Credentials', url: 'https://github.com/vpolice3/accouting-service.git'
             }
         }
+        stage('Build'){
+            steps{
+                sh 'mvn clean install -DskipTests=true'
+            }
+        }
     }
 }
