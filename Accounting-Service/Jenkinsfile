@@ -8,6 +8,7 @@ pipeline {
         }
         stage('Build'){
             steps{
+                cd Accounting-Service
                 sh 'mvn clean install -DskipTests=true'
             }
         }
