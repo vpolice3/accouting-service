@@ -9,8 +9,10 @@ pipeline {
         stage('Build'){
             steps{
                 sh '''
+                def mvnHome = tool name: 'MAVEN_HOME', type: 'maven'
+                def mvnCMD = "${mvnHome}/bin/mvn"
                 cd Accounting-Service
-                mvn clean install -DskipTests=true'
+                "${mvnCMD} clean install -DskipTests=true"
                 '''
             }
         }
